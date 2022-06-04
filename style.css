@@ -365,7 +365,6 @@ section.active{
     display: flex;
     flex-direction: column;
     padding-top: 12%;
-    padding-bottom: 100px;
     align-items: center;
 }
 .learn-item{
@@ -412,9 +411,8 @@ section.active{
     height: 100%;
     transform: scale(.6);
 }
-#learnMore .credits{
-    padding-bottom: 30px;
-    font-size: .8rem;
+.learn-item:nth-child(4){
+    padding-bottom: 50px;
 }
 
 /* Navbar */
