@@ -7,14 +7,11 @@
 }
 a {
     text-decoration: none;
-    color: grey;
+    color: #c4f0ff;
     text-decoration: underline;
 }
 a:active{
-    color: green;
-}
-a:visited{
-    color: var(--color-blue);
+    color: var(--color-orange);
 }
 h1, h2{
     font-weight: 400;
@@ -323,6 +320,9 @@ section.active{
     left: 100px;
     transform: translateY(45px);
     border-radius: 3px;
+}
+#aboutMe p{
+    line-height: 1.5rem;
 }
 #aboutMe .icon-container{
     background-color: var(--color-blue);
