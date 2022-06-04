@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+    <title>ML Lab</title>
+</head>
+<body class="main-content">
+    <main>
+        <section class="section sec1 active" id="home">
+            <div class="home-section" id="home1">
+                <p class="content">Welcome to a simulation of 
+                machine learning for self-driving cars.</p>
+                <p class="credits">Inspired by 
+                    <a target="_blank" href="https://www.youtube.com/playlist?list=PLB0Tybl0UNfYoJE7ZwsBQoDIG4YN9ptyY">
+                    Radu Mariescu-Istodor's</a> 
+                self-driving AI course on Youtube.</p>
+                <p class="button" id="get-started">Get Started!</p>
+            </div>
+
+            <div class="home-section" id="home2">
+                <div class="content-container">
+                    <p class="content">I set up a simulation that demonstrates how this can be achieved with reinforced learning.
+                    </p>
+
+                    <p class="content">You can adjust the number of sensors, the spread of the sensors and some other stuff to try to get a neural network that can navigate the traffic.
+                    </p> 
+
+                    <p class="content">You can select how many cars are in each generation and how many generations are run. Your goal is to have a working brain by the last generation
+                    </p>
+                    <p class="button" id="go-to-sim">Go to simulation!</p>
+                </div>   
+            </div>
+
+            <div class="home-section" id="home3">
+                <div class="end-screen">
+                    <p class="message" id="m1">Your model was unable to finish the course without crashing :/</p>
+                    <p class="message" id="m2">Your model was unable to finish the course in time :/</p>
+                    <p class="message" id="m3">Your model was able to successfully navigate the course!</p>
+                    
+                    <div class="button-container">
+                        <p class="button" onclick="fullReset();eraseEnd();">Try Again!</p>
+                        <p class="button" data-id="learnMore">Learn More!</p>
+                    </div>
+                </div>
+                <div class="form-container">
+                        <div class="field">
+                            <label>Number of sensors:</label>
+                            <input type="number" id="sensors" name="sensors" placeholder="Sensors">
+                            <p class="error-txt" id="error-sens">Try an integer between 1 and 15</p>
+                        </div>
+                        <div class="field">
+                            <label>Angle of spread(degrees):</label>
+                            <input type="number" id="angle" name="angle" placeholder="Spread">
+                            <p class="error-txt" id="error-angle">Try an integer between 10 and 360</p>
+                        </div>
+                        <div class="field">
+                            <label>Children per generation:</label>
+                            <input type="number" id="children" name="children" placeholder="Children">
+                            <p class="error-txt" id="error-child">Try an integer between 100 and 500</p>
+                        </div>
+                        <div class="field">
+                            <label>Generations:</label>
+                            <select id="gens" name="gens">
+                                <option value=5>5</option>
+                                <option value=10>10</option>
+                                <option value=20>20</option>
+                            </select>
+                        </div>
+                        <p id="start-btn" class="button" onclick="checkVals()">Start!</p>  
+                </div>
+
+                <div class="sim-container">
+                    <canvas id="carCanvas"></canvas>
+                    <div class="canvas-btns">
+                        <div onclick="togglePause()" class="canvas-btn" id="pause-btn"><img src="img/icon_pause.png" alt="" id="pauseImg"></div>
+                    </div>
+                </div>
+
+                <div class="canvas-txtcon" id="count-items">
+                    <div class="counter">
+                        <h2 class="canvas-txt">Generation</h2>
+                        <h2 class="canvas-txt count-txt" id="gen-counter">0</h2>
+                    </div>
+                    <div class="counter">
+                        <h2 class="canvas-txt">Time remaining</h2>
+                        <h2 class="canvas-txt count-txt" id="time-counter">0</h2>
+                    </div>
+            </div>
+        </section>
+
+        <section class="section sec2" id="aboutMe">
+            <div class="section-container">
+                <div class="content-container">
+                    <h1>I'm Jeremy Edwards</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                        Minus quisquam reprehenderit, porro vero, officia nulla eveniet incidunt 
+                        sed ratione mollitia inventore vitae enim qui nihil dolor placeat quam id. 
+                        Aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Fuga, aperiam consequuntur possimus, nemo tempore ullam atque explicabo 
+                        porro libero, saepe neque at tenetur dolores nesciunt voluptas ratione 
+                        molestiae rerum exercitationem!
+                    </p>
+                    
+                    <div class="icon-container" href="facebook.com">
+                        <a href="mailto:ejeremy4@gmail.com">
+                            <img src="img/icon_email.png" alt="" class="icon">
+                        </a>
+                    </div>
+                </div>
+            <div class="image-container"><img src="img/portrait.jpeg" alt=""><div class="image-cover"></div></div>
+            </div>
+        </section>
+        <section class="section sec3" id="learnMore">
+            <div class="section-container">
+                <div class="learn-item">
+                    <div class="learn-text">
+                        <h1>Analogies</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio eius 
+                            eligendi eveniet autem reprehenderit expedita, fugit doloribus sapiente 
+                            dignissimos deserunt totam, sequi nam nobis! Delectus earum corrupti 
+                            architecto aliquam sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Fuga sed recusandae, voluptatibus sit praesentium vero quis asperiores 
+                            earum odit ratione perferendis quod nisi perspiciatis repellendus consequatur inventore 
+                            necessitatibus magnam impedit.</p>
+                    </div>
+                    <div class="icon-container"><img src="img/icon_trafficlight.png" alt="" class="icon"></div>
+                </div>
+
+                <div class="learn-item">
+                    <div class="icon-container"><img src="img/icon_brain.png" alt="" class="icon"></div>
+                    <div class="learn-text">
+                        <h1>The Model</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio eius 
+                            eligendi eveniet autem reprehenderit expedita, fugit doloribus sapiente 
+                            dignissimos deserunt totam, sequi nam nobis! Delectus earum corrupti 
+                            architecto aliquam sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Fuga sed recusandae, voluptatibus sit praesentium vero quis asperiores 
+                            earum odit ratione perferendis quod nisi perspiciatis repellendus consequatur inventore 
+                            necessitatibus magnam impedit.</p>
+                    </div>
+                </div>
+
+                <div class="learn-item">
+                    <div class="learn-text">
+                        <h1>Fitness Function</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio eius 
+                            eligendi eveniet autem reprehenderit expedita, fugit doloribus sapiente 
+                            dignissimos deserunt totam, sequi nam nobis! Delectus earum corrupti 
+                            architecto aliquam sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Fuga sed recusandae, voluptatibus sit praesentium vero quis asperiores 
+                            earum odit ratione perferendis quod nisi perspiciatis repellendus consequatur inventore 
+                            necessitatibus magnam impedit.</p>
+                    </div>
+                    <div class="icon-container"><img src="img/icon_train.png" alt="" class="icon"></div>
+                </div>
+
+                <div class="learn-item">
+                    <div class="icon-container"><img src="img/icon_learn.png" alt="" class="icon"></div>
+                    <div class="learn-text">
+                        <h1>Learning</h1>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio eius 
+                            eligendi eveniet autem reprehenderit expedita, fugit doloribus sapiente 
+                            dignissimos deserunt totam, sequi nam nobis! Delectus earum corrupti 
+                            architecto aliquam sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Fuga sed recusandae, voluptatibus sit praesentium vero quis asperiores 
+                            earum odit ratione perferendis quod nisi perspiciatis repellendus consequatur inventore 
+                            necessitatibus magnam impedit.</p>
+                    </div>
+                </div>
+                <p class="credits">Thanks to <a target="_blank" href="https://radufromfinland.com/">Radu from Finland</a> and his excellent walkthrough on Youtube.</p>
+        
+            </div>
+        </section>
+    </main>
+
+    <div class="navbar">
+        <div class="nav-divider"></div>
+        <div class="title-container">
+            <h1>ML Lab</h1>
+            <h2>Self Driving Cars</h2>
+        </div>
+        <div class="nav-btns">
+            <p class="nav-btn home active" data-id="home">Home</p>
+            <p class="nav-btn aboutMe " data-id="aboutMe">About Me</p>
+            <p class="nav-btn learnMore " data-id="learnMore">Learn More</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="network.js"></script>
+    <script src="sensor.js"></script>
+    <script src="utils.js"></script>
+    <script src="road.js"></script>
+    <script src="controls.js"></script>
+    <script src="car.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
