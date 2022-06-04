@@ -87,7 +87,8 @@ function checkVals(){
             if(!isPaused){
                 console.log("Timing")
                 msCount+=10;
-                timeTxt.innerHTML=(genDuration-secCount)+":"+(1000-msCount)/10;
+                timeTxt.innerHTML=msCount<=900? (genDuration-secCount)+":"+(1000-msCount)/10:(genDuration-secCount)+":"+(1000-msCount);
+            
                 if(msCount==1000){
                     msCount=0;
                     if(secCount==genDuration){
