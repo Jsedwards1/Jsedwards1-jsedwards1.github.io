@@ -153,13 +153,15 @@
                 <div class="learn-item">
                     <div class="learn-text">
                         <h1>Fitness Function</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio eius 
-                            eligendi eveniet autem reprehenderit expedita, fugit doloribus sapiente 
-                            dignissimos deserunt totam, sequi nam nobis! Delectus earum corrupti 
-                            architecto aliquam sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Fuga sed recusandae, voluptatibus sit praesentium vero quis asperiores 
-                            earum odit ratione perferendis quod nisi perspiciatis repellendus consequatur inventore 
-                            necessitatibus magnam impedit.</p>
+                        <p>This reinforcement learning model employs a genetic algorithm. The first 
+                            generation is made of cars with completely randomized neural networks. The most 
+                            "fit" child out of a generation is used as the blueprint for the next generation, 
+                            whose children vary randomly but bear a resemblance to their progenitor. 
+                            This process continues over many generations until a successful model is developed. 
+                            The “most fit” child is determined according to a fitness function which 
+                            should be chosen carefully. This mode uses an extremely privative function, 
+                            selecting the car which is furthest ahead.  
+                        </p>
                     </div>
                     <div class="icon-container"><img src="img/icon_train.png" alt="" class="icon"></div>
                 </div>
@@ -168,13 +170,18 @@
                     <div class="icon-container"><img src="img/icon_learn.png" alt="" class="icon"></div>
                     <div class="learn-text">
                         <h1>Learning</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio eius 
-                            eligendi eveniet autem reprehenderit expedita, fugit doloribus sapiente 
-                            dignissimos deserunt totam, sequi nam nobis! Delectus earum corrupti 
-                            architecto aliquam sed. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Fuga sed recusandae, voluptatibus sit praesentium vero quis asperiores 
-                            earum odit ratione perferendis quod nisi perspiciatis repellendus consequatur inventore 
-                            necessitatibus magnam impedit.</p>
+                        <p>This network learns by taking the best child from the previous generation 
+                            and “mutating” it randomly to produces hundreds of children for the current 
+                            generation. Every weight and bias in the network is a value between -1 and 1. 
+                            The mutation function generates a random number between -1 and 1 and performs 
+                            linear interpolation between the value of that weight or bias in the best child 
+                            of the previous generation and the random number. The factor for interpolation 
+                            should be statistically selected. The factor for interpolation determines how far 
+                            along the imaginary line between our old and random values our new weight will be 
+                            (0% replicates the previous network and 100% generates a completely random network). 
+                            If it’s too low, the network will learn too slowly. If it’s too high, learning 
+                            becomes difficult as useful properties are not passed from generation to generation. 
+                        </p>
                     </div>
                 </div>
                 
