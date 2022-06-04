@@ -31,8 +31,8 @@ let gens=0;
 
 let secCount=0;
 let msCount=0;
-const genDuration=15;
-const testDuration=15;
+const genDuration=14;
+const testDuration=14;
 var testTime;
 var checkTime;
 
