@@ -196,8 +196,12 @@ function animate(time){
             cars[i].draw(carCtx,"blue");
         }
         carCtx.globalAlpha=1;
-        bestCar.draw(carCtx,"blue",true);
-
+        if(!testing){
+            bestCar.draw(carCtx,"blue",true);
+        }
+        else{
+            bestCar.draw(carCtx,"blue",false);
+        }
         carCtx.restore();
         requestAnimationFrame(animate);
     }
