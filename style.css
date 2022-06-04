@@ -371,8 +371,8 @@ section.active{
 .learn-item{
     display: flex;
     flex-direction: row;
-    width: 90%;
-    padding: 20px 100px;
+    width: 70%;
+    padding: 1% 0;
     margin-bottom: 50px;
     justify-content: space-between;
 }
@@ -402,6 +402,7 @@ section.active{
     border: 2.5px solid white;
     height: 150px;
     width: 150px;
+    top: 0;
     border-radius: 50%;
 }
 .learn-item img{
