@@ -69,7 +69,8 @@ function checkVals(){
 
 
     if(validVals[0] && validVals[1] && validVals[2]){
-        discard();
+    
+        
         startBtn.style.opacity=0;
         startBtn.style.pointerEvents="none";
         pauseBtn.style.opacity=1;
@@ -80,7 +81,9 @@ function checkVals(){
         countSections[0].style.opacity=1;
         countSections[1].style.opacity=1;
 
-        let checkTime=setInterval(function (){
+        discard();
+
+        checkTime=setInterval(function (){
             if(!isPaused){
                 console.log("Timing")
                 msCount+=10;
@@ -135,10 +138,12 @@ function generateCars(N){
     return cars;
 }
 function save(){
-    localStorage.setItem("bestBrain",
-        JSON.stringify(bestCar.brain));
+    if(bestCar!=null){
+        localStorage.setItem("bestBrain",
+            JSON.stringify(bestCar.brain));
 
-    console.log("saved");
+        console.log("saved");
+    }
 }
 function discard(){
     localStorage.removeItem("bestBrain");
@@ -236,7 +241,7 @@ function init(){
             cars[i].brain=JSON.parse(
                 localStorage.getItem("bestBrain"));
             if(i!=0){
-                NeuralNetwork.mutate(cars[i].brain,0.5);
+                NeuralNetwork.mutate(cars[i].brain,0.1);
             }
         }
     }
@@ -303,22 +308,20 @@ function fullReset() {
     bestBrain=null;
     bestCar=null;
 
-    secCount=0;
-    msCount=0;
-    currentGen=1;
-    console.log("currentGen=1");
-    isPaused=false;
-    testing=false;
-
     startBtn.style.opacity=1;
     startBtn.style.pointerEvents="all";
     pauseBtn.style.opacity=0;
     pauseBtn.style.pointerEvents="none";
-    countSections[0].children[0].innerHTML="Generation";
     genTxt.innerHTML=currentGen+" of "+gens;
     timeTxt.innerHTML=secCount+":"+msCount;
+    countSections[0].children[0].innerHTML="Generation";
     countSections[0].style.opacity=0;
     countSections[1].style.opacity=0;
+
+    secCount=0;
+    msCount=0;
+    currentGen=1;
+    testing=false;
     
     document.getElementById('sensors').value='';
     document.getElementById('angle').value='';
