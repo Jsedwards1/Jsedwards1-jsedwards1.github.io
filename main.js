@@ -69,7 +69,7 @@ function checkVals(){
 
 
     if(validVals[0] && validVals[1] && validVals[2]){
-        
+        discard();
         startBtn.style.opacity=0;
         startBtn.style.pointerEvents="none";
         pauseBtn.style.opacity=1;
